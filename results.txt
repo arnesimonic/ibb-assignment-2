@@ -1,0 +1,7 @@
+Average IOU:
+
+Nothing = 30.35%
+GS = 30.35%
+HE = 23.54%
+GS + HE = 24.93%
+Gamma 1.5 = 30.80%
