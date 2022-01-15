@@ -19,6 +19,7 @@ class EvaluateAll:
             config = json.load(config_file)
 
         self.images_path = config['images_path']
+        self.bounded_path = config['bounded_path']
         self.annotations_path = config['annotations_path']
 
     def get_annotations(self, annot_name):
@@ -63,13 +64,13 @@ class EvaluateAll:
             # Apply some preprocessing
 
             # Gamma correction
-            # img = preprocess.gamma_correction(img, 1.3)
+            # img = preprocess.gamma_correction(img, 1.5)
 
             # Contrast and brightness
-            # img = preprocess.contrast_brightness_correction(img, 1, param)
+            img = preprocess.contrast_brightness_correction(img, 0.78, 0)
 
             # Brightness normalization
-            img = preprocess.adjust_brightness(img, 0.6)
+            # img = preprocess.adjust_brightness(img, 0.6)
 
             # Automatic brightness
             # img = preprocess.automatic_brightness_and_contrast(img, 15)
@@ -93,8 +94,20 @@ class EvaluateAll:
             # img = preprocess.adaptive_threshold(img)
 
             # Run the detector. It runs a list of all the detected bounding-boxes. In segmentor you only get a mask matrices, but use the iou_compute in the same way.
-            prediction_list = cascade_detector.detect(img)
-            print(im_name)
+            prediction_list = super_detector.detect(img)
+            print(prediction_list)
+
+            # Draw rectangles and save
+            im_path = "cropped\\"+im_name
+            print(im_path)
+            for box in prediction_list:
+                [x,y,w,h] = box
+                if x<0 or y<0 or w<0 or h<0:
+                    continue
+                # cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 1)
+                cropped_img = img[y:y+h, x:x+w]
+                cv2.imwrite(im_path, cropped_img)
+                break
 
             # Only for detection:
             p, gt = eval.prepare_for_detection(prediction_list, annot_list)

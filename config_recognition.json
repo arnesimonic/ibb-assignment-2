@@ -1,0 +1,5 @@
+{
+    "images_path" : "data/ears/cut/test",
+    "images_path_train" : "data/ears/cut/train",
+    "annotations_path" : "data/ears/annotations/recognition/ids.csv"
+}

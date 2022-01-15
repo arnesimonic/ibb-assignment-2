@@ -1,4 +1,5 @@
 {
-    "images_path" : "data/ears/test",
-    "annotations_path" : "data/ears/annotations/detection/test_YOLO_format"
+    "images_path" : "data\\ears\\train",
+    "bounded_path": "data\\ears\\bounded\\train",
+    "annotations_path" : "data/ears/annotations/detection/train_YOLO_format"
 }

@@ -5,8 +5,8 @@ import numpy as np
 class SuperDetector:
 
 	net = cv2.dnn.readNet(
-		"C:\\Users\\arnes\\Faks Local\\SB\\DN2\\Regular Track - Files for Assignment 2\\detectors\\your_super_detector\\yolov3_training_last.weights",
-		"C:\\Users\\arnes\\Faks Local\\SB\\DN2\\Regular Track - Files for Assignment 2\\detectors\\your_super_detector\\yolov3_testing.cfg"
+		"C:\\Users\\arnes\\Faks Local\\SB\\DN2\\repo\\detectors\\your_super_detector\\yolov3_training_last.weights",
+		"C:\\Users\\arnes\\Faks Local\\SB\\DN2\\repo\\detectors\\your_super_detector\\yolov3_testing.cfg"
 	)
 	layer_names = net.getLayerNames()
 
